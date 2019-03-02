@@ -4,7 +4,7 @@
 
 <div class="columns section">
     <div class="column is-8 is-offset-2">
-        <h1 class="is-size-1">Listado de Posts</h1>
+        <h1 class="is-size-1">Listado de Entradas</h1>
 
         @foreach($posts as $post)
         <div class="card box">
@@ -25,8 +25,8 @@
                 </div>
             </div>
 
-            <footer class="card-footer">
-                <a href="{{ route('post', $post->slug) }}" class="card-footer-item button is-link" style="float: right;">Leer Más</a>
+            <footer class="card-footer columns">
+                <a href="{{ route('post', $post->slug) }}" class="column is-offset-10 is-2 card-footer-item button is-primary" style="margin: 20px 0; padding: 10px;">Leer Más</a>
             </footer>
 
         </div>

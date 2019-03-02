@@ -49,7 +49,7 @@ class TagController extends Controller
     {
         $tag = Tag::create($request->all());
         
-        return redirect()->route('admin.tags.index')
+        return redirect()->route('tags.index')
             ->with('info', 'Etiqueta Creada con éxito!');
     }
 
@@ -92,7 +92,7 @@ class TagController extends Controller
 
         $tag->fill($request->all())->save();
 
-        return redirect()->route('admin.tags.index')
+        return redirect()->route('tags.index')
             ->with('info', 'Etiqueta actualizada con éxito!');
     }
 
@@ -106,7 +106,7 @@ class TagController extends Controller
     {
         $tag = Tag::findOrFail($id)->delete();
 
-        return redirect()->route('admin.tags.index')
+        return redirect()->route('tags.index')
             ->with('info', 'Etiqueta eliminada correctamente!');
     }
 }
