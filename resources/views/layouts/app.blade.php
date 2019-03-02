@@ -75,7 +75,7 @@
         <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
             <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item is-1" href="#">
+                <a class="navbar-item is-size-2" href="/">
                     CMS SOFT
                 </a>
 
@@ -96,10 +96,10 @@
                 <div class="buttons">
                 @guest
                     <a href="{{ route('login') }}" class="button is-link">
-                        <strong>Sign up</strong>
+                        <strong>Login</strong>
                     </a>
                     <a href="{{ route('register') }}" class="button is-light">
-                        Log in
+                        Registrate
                     </a>
                 @else
                 <div class="navbar-item has-dropdown is-hoverable">

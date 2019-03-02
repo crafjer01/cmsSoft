@@ -7,7 +7,7 @@
         <h1 class="is-size-1">Listado de Posts</h1>
 
         @foreach($posts as $post)
-        <div class="card">
+        <div class="card box">
             <header class="card-header">
                 <div class="card-header-title">
                     {{ $post->name }}
@@ -26,7 +26,7 @@
             </div>
 
             <footer class="card-footer">
-                <a href="#" class="card-footer-item">Leer Más</a>
+                <a href="{{ route('post', $post->slug) }}" class="card-footer-item button is-link" style="float: right;">Leer Más</a>
             </footer>
 
         </div>

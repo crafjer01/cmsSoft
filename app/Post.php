@@ -24,4 +24,9 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'PUBLISHED');
+    }
 }
