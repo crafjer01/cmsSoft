@@ -1,12 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Amin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Tag;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::orderBy('id', 'DESC')->paginate(5);
+
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -24,7 +33,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
+
     }
 
     /**
@@ -35,7 +45,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = Tag::create($request->all());
+        
+        return redirect()->route('admin.tags.index')
+            ->with('info', 'Etiqueta Creada con éxito!');
     }
 
     /**
@@ -46,7 +59,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        return view('admin.tags.show', compact('tag'));
     }
 
     /**
@@ -57,7 +72,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -69,7 +86,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tag = Tag::findOrFail($id);
+
+        $tag->fill($request->all())->save();
+
+        return redirect()->route('admin.tags.index')
+            ->with('info', 'Etiqueta actualizada con éxito!');
     }
 
     /**
@@ -80,6 +102,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::findOrFail($id)->delete();
+
+        return redirect()->route('admin.tags.index')
+            ->with('info', 'Etiqueta eliminada correctamente!');
     }
 }
