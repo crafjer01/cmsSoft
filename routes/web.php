@@ -20,3 +20,8 @@ Route::get('blog', 'web\WebController@blog')->name('blog');
 Route::get('entrada/{slug}', 'web\WebController@post')->name('post');
 Route::get('categoria/{slug}', 'web\WebController@category')->name('category');
 Route::get('etiqueta/{slug}', 'web\WebController@tag')->name('tag');
+
+//admin
+Route::resource('tags', 'Admin\TagController');
+Route::resource('categories', 'Admin\CategoryController');
+Route::resource('posts', 'Admin\PostController');

@@ -86,11 +86,7 @@
                 </a>
             </div>
             <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
                 
-                
-                </div>
-
                 <div class="navbar-end">
                 <div class="navbar-item">
                 <div class="buttons">
@@ -102,6 +98,10 @@
                         Registrate
                     </a>
                 @else
+                <a href="{{ route('blog') }}" class="button is-primary" >Blog</a>
+                <a href="{{ route('tags.index') }}" class="button is-primary">Etiquetas</a>
+                <a href="{{ route('categories.index') }}" class="button is-primary">Categorías</a>
+                <a href="{{ route('posts.index') }}" class="button is-primary">Entradas</a>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                     {{ Auth::user()->name }}
