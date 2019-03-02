@@ -28,4 +28,13 @@ class TagStoreRequest extends FormRequest
             'slug' => 'required|unique:tags,slug'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre de la etiqueta es obligatorio.',
+            'slug.required' => 'El slug de la etiqueta es obligatorio.',
+            'name.unique' => 'El slug de la etiqueta debe ser único.'
+        ];
+    }
 }

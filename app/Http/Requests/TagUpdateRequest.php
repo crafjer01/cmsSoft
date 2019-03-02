@@ -34,7 +34,7 @@ class TagUpdateRequest extends FormRequest
         return [
             'name.required' => 'El nombre de la etiqueta es obligatorio.',
             'slug.required' => 'El slug de la etiqueta es obligatorio.',
-            'name.unique' => 'El slug de la etiqueta debe ser único.',
-        ]
+            'name.unique' => 'El slug de la etiqueta debe ser único.'
+        ];
     }
 }
