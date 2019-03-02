@@ -8,18 +8,19 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Blog') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+
+        <!-- <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
+
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle Navigation</span>
                         <span class="icon-bar"></span>
@@ -27,21 +28,21 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Branding Image -->
+                   
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Blog') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
+                 
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                   
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
+                        
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
@@ -69,12 +70,64 @@
                     </ul>
                 </div>
             </div>
+        </nav> -->
+        
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+            <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item is-1" href="#">
+                    CMS SOFT
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                
+                
+                </div>
+
+                <div class="navbar-end">
+                <div class="navbar-item">
+                <div class="buttons">
+                @guest
+                    <a href="{{ route('login') }}" class="button is-link">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a href="{{ route('register') }}" class="button is-light">
+                        Log in
+                    </a>
+                @else
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                    {{ Auth::user()->name }}
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a href="{{ route('logout') }}" class="navbar-item" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Salir
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                           {{ csrf_field() }}
+                        </form>
+                    </div>
+                </div>
+
+                @endguest
+                    
+                </div>
+                </div>
+                </div>
+            </div>
+            </div>
         </nav>
 
         @yield('content')
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
